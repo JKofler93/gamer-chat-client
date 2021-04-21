@@ -28,7 +28,7 @@ function Login({ loginUser }) {
 
             if(data.user) {
                 loginUser(data.user)
-                localStorage.setItem('token', data.token)
+                localStorage.setItem("token", data.token)
             } else {
                 console.log(data)
                 setErrors(data.error)

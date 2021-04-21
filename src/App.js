@@ -18,8 +18,9 @@ function App() {
   const [gameAvg, setGameAvg] = useState(0)
   
   const history = useHistory()
-  // const location = useLocation()
+  const location = useLocation()
 
+console.log("HISTORY", history)
   const putModalOnScreen = () => {
     setModalIsOn(true)
   }
@@ -38,7 +39,7 @@ function App() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(res => res.json)
+      .then(res => res.json())
       .then(user => {
         setCurrentUser(user);
       })
@@ -48,7 +49,7 @@ function App() {
   // Logs in user
   const loginUser = (user) => {
     setCurrentUser(user)
-    history.pushState('/games')
+    history.push("/games")
   }
 
   // logs out user
@@ -121,13 +122,11 @@ function App() {
 
   
   return (
-    <Router>
       <div className="App">
-      <NavBar getRandomGame={getRandomGame} filter={filter} setFilter={setFilter} setSearch={setSearch} currentUser={currentUser} logoutUser={logoutUser}/>
-        <h1>hi</h1>
+        <NavBar getRandomGame={getRandomGame} filter={filter} setFilter={setFilter} setSearch={setSearch} currentUser={currentUser} logoutUser={logoutUser}/>
         <Switch>
 
-          <Route exact path='/games'>
+          <Route exact path="/games">
             <GameContainer games={filterGames} />
           </Route>
 
@@ -142,9 +141,13 @@ function App() {
           <Route>
             <Register loginUser={loginUser}/>
           </Route>
+
+          <Route path="*">
+            <Redirect to="/games" />
+          </Route>
+
         </Switch>
       </div>
-    </Router>
   );
 }
 

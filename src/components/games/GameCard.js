@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 function GameCard({ game }) {
     const { id, title, image } = game
+    let sumRating = game.reviews.map(review => review.rating).reduce((a, b) => a + b, 0)
+    let avgRating = (sumRating / game.reviews.length).toFixed(1)
 
     return (
         <div className="card">
@@ -14,7 +16,7 @@ function GameCard({ game }) {
                     {title}
                 </div>
                 <div className="card-rating">
-                    {/* ⭐ {isNaN(averageRating) ? "0" : averageRating} ({game.reviews.length}) */}
+                    👍 {isNaN(avgRating) ? "0" : avgRating} ({game.reviews.length})
                 </div>
             </div>
         </div>
