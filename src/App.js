@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch, useHistory, useLocation } from "react-router-dom";
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import NavBar from './components/NavBar';
+import GameContainer from './components/games/GameContainer';
+import GamePage from './components/games/GamePage';
 import './App.css';
 
 function App() {
@@ -120,8 +123,18 @@ function App() {
   return (
     <Router>
       <div className="App">
+      <NavBar getRandomGame={getRandomGame} filter={filter} setFilter={setFilter} setSearch={setSearch} currentUser={currentUser} logoutUser={logoutUser}/>
         <h1>hi</h1>
         <Switch>
+
+          <Route exact path='/games'>
+            <GameContainer games={filterGames} />
+          </Route>
+
+          <Route exact path="/games/:id">
+            <GamePage setGameAvg={setGameAvg} currentUser={currentUser} handleFavoriteGame={handleFavoriteGame}/>
+          </Route>
+
           <Route exact path='/'>
             <Login loginUser={loginUser}/>
           </Route>

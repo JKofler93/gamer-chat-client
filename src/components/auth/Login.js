@@ -58,6 +58,16 @@ function Login({ loginUser }) {
                         <button type='submit'>Login</button>
                 </form>
                 <div className='errors'>{errors}</div>
+
+                <button 
+                className="submit-button">
+                    <NavLink exact to="/register" className='submit-button'>Not a Member?</NavLink>
+                </button>
+
+                <button 
+                    className='submit-button' 
+                    onClick={() => history.push("/games")}
+                > Wanna look around?</button>
             </div>
         </div>
     )
