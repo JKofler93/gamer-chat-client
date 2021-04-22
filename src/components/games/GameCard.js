@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
 function GameCard({ game }) {
@@ -9,9 +9,9 @@ function GameCard({ game }) {
     return (
         <div className="card">
             <Link to={`/games/${id}`}>
-                <img className="poster" src={image} alt={title}/>
+                <img className="banner" src={image} alt={title}/>
             </Link>
-            <div className='card-content'>
+            <div className="card-content">
                 <div className="card-title">
                     {title}
                 </div>

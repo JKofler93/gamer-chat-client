@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
 function Register({ loginUser }) {
     const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ function Register({ loginUser }) {
             password
         }
 
-        fetch('http://localhost:3000/register', {
+        fetch("http://localhost:3000/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,46 +26,50 @@ function Register({ loginUser }) {
         .then(data => {
             if(data.user) {
                 loginUser(data.user);
-                localStorage.setItem('token', data.token)
+                localStorage.setItem("token", data.token)
             } else {
                 setErrors(data.errors)
             }
         })
     }
     return (
-        <div className='login'>
-            <form className='login-form' onSubmit={handleUserRegistration}>
-            <h2>Welcome to GamerChat!</h2>
+        <div className="login">
+            <div className="login-border">
+                <form className="login-form" onSubmit={handleUserRegistration}>
+                <h2>Gamer Chat 🕹 💬</h2>
 
-                <label htmlFor="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+                    <input
+                        className="login-input-field"
+                        placeholder="Create Username..."
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
 
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    <input
+                        className="login-input-field"
+                        placeholder="Enter Password..."
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <br></br>
+                    <button type="submit" className="submit-button">Register!</button>
+                </form>   
+                    <div className="errors">{errors}</div>
+                    
+                    <button 
+                    className="submit-button">
+                        <NavLink exact to="/" className="submit-button">Already a Member ?</NavLink>
+                    </button>
 
-                <button type="submit" className='submit-button'>Register!</button>
-            </form>   
-                <div className="errors">{errors}</div>
-                
-                <button 
-                className="submit-button">
-                    <NavLink exact to="/" className='submit-button'>Already a Member ?</NavLink>
-                </button>
-
-                <button 
-                    className='submit-button' 
-                    onClick={() => history.push("/games")}
-                > Wanna look around?</button>
+                    <button 
+                        className="submit-button" 
+                        onClick={() => history.push("/games")}
+                    >Wanna look around?</button>
+                </div>
         </div>
     )
 }

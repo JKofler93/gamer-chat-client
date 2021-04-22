@@ -5,8 +5,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import NavBar from './components/NavBar';
 import GameContainer from './components/games/GameContainer';
+import UserPage from './components/users/UserPage';
 import GamePage from './components/games/GamePage';
-import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -19,6 +19,7 @@ function App() {
   
   const history = useHistory()
   const location = useLocation()
+
 
 console.log("HISTORY", history)
   const putModalOnScreen = () => {
@@ -134,6 +135,11 @@ console.log("HISTORY", history)
             <GamePage setGameAvg={setGameAvg} currentUser={currentUser} handleFavoriteGame={handleFavoriteGame}/>
           </Route>
 
+          <Route exact path="/users/:id">
+            <UserPage currentUser={currentUser} setFavoriteGames={setFavoriteGames} favoriteGames={favoriteGames} addFavoriteGame={addFavoriteGame}/>
+          </Route>
+          
+          
           <Route exact path='/'>
             <Login loginUser={loginUser}/>
           </Route>

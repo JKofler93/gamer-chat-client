@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
 function EditReviewForm({ id, rating, content, reviews, setReviews, setIsEditing, isEditing }) {
     const [editContent, setContent] = useState(content)
@@ -13,7 +13,7 @@ function EditReviewForm({ id, rating, content, reviews, setReviews, setIsEditing
         }
 
         fetch(`http://localhost:3000/reviews/${id}`, {
-            method: 'PATCH',
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 // Accept: "application/json"

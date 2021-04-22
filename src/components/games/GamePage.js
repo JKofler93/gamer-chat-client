@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import ReactPlayer from 'react-player';
-import EditReviewForm from './EditReviewForm'
+import React, { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
+import EditReviewForm from "./EditReviewForm"
 
 function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     const [game, setGame] = useState(null);
@@ -15,7 +15,7 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     const params = useParams()
 
     useEffect(() => {
-        fetch('http://localhost:3000/reviews')
+        fetch("http://localhost:3000/reviews")
           .then(res => res.json())
           .then(reviews => {
             
@@ -48,7 +48,7 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     const submitNewReview = (e) => {
         e.preventDefault()
 
-        fetch('http://localhost:3000/reviews', {
+        fetch("http://localhost:3000/reviews", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -74,7 +74,7 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     const deleteReview = (reviewObj) => {
 
         fetch(`http://localhost:3000/reviews/${reviewObj.id}`, {
-            method: 'DELETE'
+            method: "DELETE"
         })
         .then(res => res.json())
         .then(data => {

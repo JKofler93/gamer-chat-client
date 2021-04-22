@@ -1,5 +1,5 @@
-import React from 'react';
-import GameCard from './GameCard';
+import React from "react";
+import GameCard from "./GameCard";
 
 function GameContainer({ games }) {
 
