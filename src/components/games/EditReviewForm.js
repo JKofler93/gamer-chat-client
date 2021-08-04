@@ -38,33 +38,36 @@ function EditReviewForm({ id, rating, content, reviews, setReviews, setIsEditing
     }
 
     return (
-        <div>
-            <form onSubmit={updateReview}>
-                <label>
-                    Edit your review:<br/>
-                    <textarea name="content" value={editContent} onChange ={event => setContent(event.target.value)}/>
+        <div className="review-form-div">
+            <form onSubmit={updateReview} className="review-form">
+                <label className="leave-review">Edit your review:</label>
                     <br/>
-                    Rate: 
-                    <select 
-                        name="rating" 
-                        id="rating" 
-                        form="review" 
-                        value={editRating} 
-                        onChange={event => setRating(event.target.value)}
-                    >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </label>
+                    <input 
+                        className="review-input"
+                        name="content" 
+                        value={editContent} 
+                        onChange ={event => setContent(event.target.value)}
+                    />
+                    <br/>
+                    <div className="custom-select">
+                        <label className="your-rating">Your Rating:</label>
+                            <select
+                                className="select-selected" 
+                                name="rating" 
+                                id="rating" 
+                                form="review" 
+                                value={editRating} 
+                                onChange={event => setRating(event.target.value)}
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                        </select>
+                    </div>
                 <br/>
-                <button 
-                    type="submit" 
-                    className="submit-btn"
-                >Edit Review
-                </button>
+                <button type="submit" className="submit-btn">Edit Review</button>
             </form>
         </div>
     )

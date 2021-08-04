@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import EditReviewForm from "./EditReviewForm"
+import GamePageStyles from '../../styles/GamePageStyles.css'
 
 function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     const [game, setGame] = useState(null);
@@ -100,38 +101,32 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
     if (!isLoaded) return <h2>Loading...</h2>
 
     return (
-        <div className="game-card">
-            <div className="game-title">
-                <h1>{game.title}</h1>
-            </div>
-                <div className="game-video">
+        <div className="game-page-card">
+            <h1 className="game-page-title">{game.title}</h1>
+            <div className="fav-button">{currentUser ? <button className="favorite-game-button" onClick={() => handleFavoriteGame(game)}>Add to Favorites</button> : <button className="favorite-game-button" onClick={() => handleFavoriteGame(game)}>Remove to Favorites</button> }</div>
+            <div className="game-page-info">
+                <div className="game-banner-div">
+                    <img src={game.banner} alt={game.title} className="game-banner"/>
+                </div>
+                <div className="game-video-div">
                     <ReactPlayer
+                    className="game-video"
                         url={game.video}
-                        height={460}
-                        width={1100}
+                        height={300}
+                        width={600}
                         volume={0.5}
                         muted={true}
                         playing={true}
                     />
                 </div>
-                    <div className="game-banner">
-                        <img src={game.banner} alt={game.title}/>
-                    </div>
                         <div className="game-description">
                             <p>Genre: {game.genre}</p>
                             <p>ESRB Rating: {game.esrb_rating}</p>
                             <p>{game.description}</p>
-                            {currentUser ? 
-                                <button 
-                                    className="favorite-game-button" 
-                                    onClick={() => handleFavoriteGame(game) }
-                                >One of your favs...?</button> 
-                                : 
-                                null }
                         </div>
 
         <div className="game-review">
-            <h3>Reviews</h3>
+            <h3 className="reviews-heading">Reviews</h3>
             <ul>
                 {reviews.map(review => 
                     <div className="review" key={review.id}>
@@ -139,41 +134,46 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
                         ? 
                         null 
                         :
-                        <div className="review-top">
-                            <div className="review-username">
-                                <NavLink 
-                                    exact 
-                                    to={`/users/${review.user.id}`}>
-                                {review.user.username}</NavLink>
-                                <div className="review-content">
-                                {review.content}
-                                </div>
+                            <div className="review-div">
+                                <NavLink exact className="review-username" to={`/users/${review.user.id}`} onMouseOver={() => console.log(review.user.id)}>{review.user.username}</NavLink>
+                                <p className="review-content">{review.content}</p>
                             </div>
-                        </div>}
+                        }
                         {!currentUser 
-                            ? 
+                        
+                        ? 
+                            
                             null
-                            : currentUser.id === review.user_id
-                            ? 
+
+                        : currentUser.id === review.user_id
+                            
+                        ? 
                             <div>
-                                    {/* onUpdateReview={handleUpdateReview} */}
-                                {isEditing ? 
-                                <EditReviewForm 
-                                    id={review.id} 
-                                    content={review.content} 
-                                    rating={review.rating} 
-                                    setReviews={setReviews}
-                                    reviews={reviews} 
-                                    setIsEditing={setIsEditing}
-                                    isEditing={isEditing}
-                                />
+                                {isEditing 
+                                
+                                ? 
+                                    <EditReviewForm 
+                                        id={review.id} 
+                                        content={review.content} 
+                                        rating={review.rating} 
+                                        setReviews={setReviews}
+                                        reviews={reviews} 
+                                        setIsEditing={setIsEditing}
+                                        isEditing={isEditing}
+                                    />
+
                                 :  
-                                null
+                                    <div className="review-div">
+                                        <button className="edit-button" onClick={() => setIsEditing(!isEditing)}>📝</button>
+                                        <button className="delete-button" onClick={() => deleteReview(review)}>🗑</button>
+                                    </div>
                                 }
-                                    <button className="edit-button" onClick={() => setIsEditing(!isEditing)}>📝</button>
-                                    <button className="delete-button" onClick={() => deleteReview(review)}>🗑</button>
-                                </div>
-                                : null}
+                            </div>
+                            
+                            :
+                            
+                                null
+                        }
                     </div>
                 )}
             </ul>
@@ -184,40 +184,40 @@ function GamePage({ currentUser, handleFavoriteGame,  setGameAvg }) {
             : 
             !reviews.map(review => review.user_id).includes(currentUser.id)
             ?
-            <div className="review form">
-                <form onSubmit={submitNewReview}>
-                    <label>
-                    Leave a review:<br/>
-                    <textarea 
+            <div className="review-form-div">
+                <form onSubmit={submitNewReview} className="review-form">
+                    <label className="leave-review">Leave a review:</label>
+                    <br/>
+                    <input 
+                        className="review-input"
                         name="content" 
                         value={content} 
                         onChange={event => setContent(event.target.value)}
                     />
                     <br/>
-                    Your Rating:
-                        <select
-                            name="rating" 
-                            value={rating} 
-                            onChange={event => setRating(event.target.value)}
-                        >   
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </label>
+                    <div className="custom-select">
+                        <label className="your-rating">Your Rating:</label>
+                            <select
+                                className="select-selected"
+                                name="rating" 
+                                value={rating} 
+                                onChange={event => setRating(event.target.value)}>  
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                    </div>
                     <br/>
-                    <button
-                        className="submit-btn"
-                        type="submit"
-                    >Post Review...</button>
+                    <button className="submit-btn" type="submit">Post Review</button>
 
                 </form>
             </div>
             : 
             null
             }
+            </div>
         </div>
     </div>
 

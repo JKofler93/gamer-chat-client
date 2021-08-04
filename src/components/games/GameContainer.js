@@ -3,11 +3,11 @@ import GameCard from "./GameCard";
 
 function GameContainer({ games }) {
 
-    const gamesArr = games.map(game => <GameCard key={game.id} game={game}/>)
+    const gamesArray = games.map(game => <GameCard key={game.id} game={game}/>)
     return (
-        <>
-            {gamesArr}
-        </>
+        <div className="game-grid">
+            {gamesArray}
+        </div>
     )
 }
 

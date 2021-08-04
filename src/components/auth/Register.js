@@ -36,7 +36,7 @@ function Register({ loginUser }) {
         <div className="login">
             <div className="login-border">
                 <form className="login-form" onSubmit={handleUserRegistration}>
-                <h2>Gamer Chat 🕹 💬</h2>
+                <h2 className="app-name">Gamer Chat 🕹 💬</h2>
 
                     <input
                         className="login-input-field"
@@ -59,16 +59,10 @@ function Register({ loginUser }) {
                     <button type="submit" className="submit-button">Register!</button>
                 </form>   
                     <div className="errors">{errors}</div>
-                    
-                    <button 
-                    className="submit-button">
-                        <NavLink exact to="/" className="submit-button">Already a Member ?</NavLink>
-                    </button>
-
-                    <button 
-                        className="submit-button" 
-                        onClick={() => history.push("/games")}
-                    >Wanna look around?</button>
+                    <br/>
+                    <button className="submit-button"><NavLink exact to="/" className="submit-button">Already a Member ?</NavLink></button>
+                    <br/>
+                    <button className="submit-button" onClick={() => history.push("/games")}>Look around?</button>
                 </div>
         </div>
     )

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useLocation } from "react-router-dom";
+import ProfilePageStyles from "../../styles/ProfilePageStyles.css"
 
-function UserPage({ addFavoriteGame, currentUser, setFavoriteGames, favoriteGames }) {
-    const [user, setUser] = useState(null);
+function UserPage({ currentUser, setFavoriteGames, favoriteGames }) {
+    const [user, setProfileUser] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
+    console.log(favoriteGames)
     
     const params = useParams()
+    // console.log(user.id)
+    console.log(params)
     
 
     useEffect(() => {
@@ -14,32 +18,16 @@ function UserPage({ addFavoriteGame, currentUser, setFavoriteGames, favoriteGame
           .then(user => {
 
             console.log(user)
-            setUser(user);
+            setProfileUser(user);
             setIsLoaded(true);
           })
           
     }, [params.id]);
 
-    const makeGameAFavoriteGame = (favoriteGameObj) => {
-        fetch(`${process.env.REACT_APP_API_BASE_URL}/favoriteGames/${favoriteGameObj.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                favorite: !favoriteGameObj.favorite
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            addFavoriteGame(data)
-        })
-    }
 
     const deleteGameFromFavorites = (gameObj) => {
         //console.log(gameObj)
-        fetch(`http://localhost:3000/favoriteGames/${gameObj}`, {
+        fetch(`http://localhost:3000/favorite_games/${gameObj}`, {
             method: "DELETE"
         })
         .then(res => res.json())
@@ -56,53 +44,39 @@ function UserPage({ addFavoriteGame, currentUser, setFavoriteGames, favoriteGame
         <div>   
             <div className="user-page-info">
                 <div className="user-head">
-                    <div className="username">
+                    <h1 className="username">
                         {user.username} 
-                    </div>
+                    </h1>
                 </div>
+                {currentUser.id === user.id ? <h3 className="fav-game-header">Your Favorite Games are...</h3> : <h3 className="fav-game-header">Their Favorite Games are...</h3>}
                 <div className="game-list">
-                    <h3>Game List</h3> 
-                    <ul>
                         {favoriteGames.filter(favoriteGame =>
                             favoriteGame.user_id === user.id
                         )
                         .map(favoriteGame => 
-                        <div key={favoriteGame.id}>
-                            <NavLink exact to={`/games/${favoriteGame.game.id}`}>{favoriteGame.game.title}</NavLink>
-                            {!currentUser ? 
-                                null 
-                                : currentUser.id === favoriteGame.user_id
-                                ? 
+                        <div key={favoriteGame.id} className="favorite-game-img-div">
+                            <NavLink exact to={`/games/${favoriteGame.game.id}`}><img alt="game-banner" src={favoriteGame.game.image} className="favorite-game-img"/></NavLink>
+                            {currentUser.id === user.id ? 
                                 <div>
-                                    {favoriteGame.favorite ? (
-                                    <button className="emoji-button favorite active" onClick={() => makeGameAFavoriteGame(favoriteGame)}>★</button>
-                                    ) : (
-                                    <button className="emoji-button favorite" onClick={() => makeGameAFavoriteGame(favoriteGame)}>☆</button>
-                                    )}
                                     <button className="delete-button" onClick={() => deleteGameFromFavorites(favoriteGame.id)}>🗑</button>
                                 </div>
                                 : null}
                         </div>)}
-                    </ul>
                 </div>
+                    {currentUser.id === user.id ? <h3 className="fav-game-header">Your Reviewed Games are...</h3> : <h3 className="fav-game-header">Their Reviewed Games are...</h3>}
                 <div className="reviewed">
-                    <h3>Reviewed Games</h3>
-                    <ul>
                         {user.reviews.map(review => 
                             <div key={review.id} className="user-review">
-                                <div className="user-review-head ">
-                                    <div className={review.rating <= 3 ? "rating-circle-red" : review.rating <= 7 ? "rating-circle-yellow" : "rating-circle"}>
-                                        {review.rating}
-                                    </div>
-                                        <div className="user-game-title">
-                                            {review.game.title}
-                                        </div>
-                                    
+                                <div className="user-review-div">
+                                <ul className="profile-ul">
+                                    <li className="profile-li">{review.game.title} <br></br>{review.rating}⭐️</li>
+                                </ul>
+                                    {/* <h4 className="profile-review-game-title">{review.game.title}</h4>
+                                    <h4 className="profile-review-game-rating">{review.rating}⭐️</h4> */}
+                                    {/* <h4 className="user-review-content">{review.content}</h4> */}
                                 </div>
-                                <div className="user-review-content">{review.content}</div>
                             </div>)
                         }
-                    </ul>
                 </div>
             </div>
         </div>         

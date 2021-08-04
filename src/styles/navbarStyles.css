@@ -1,0 +1,151 @@
+/* Navbar styles */
+
+#navbar {
+    /* position: fixed; */
+    /* top: 0; */
+    width: 100vw;
+    height: fit-content;
+    /* margin: 0 2vh; */
+    margin: 2vh 0;
+    /* z-index: 1; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+  /* Navbar right css */
+  
+  /* Left button css */
+  button#game-btn {
+    height: 30px;
+    text-decoration: none;
+    font-family: Copperplate;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: gold; 
+    font-weight: 800;
+    
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+
+  }
+  
+  #game-btn:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+  }
+  /* Left button css end */
+  
+  /* Center search form css */
+  #navbar-center{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #navbar-search {
+    width: 100%;
+    align-items: center;
+    text-decoration: none;
+    font-family: Copperplate;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: gold; 
+    text-align: center;
+    font-weight: 600;
+    height: 30px;
+  }
+  
+  #navbar-search input {
+    height: 100%;
+    width: 25vw;
+    border: 1px solid rgb(198, 196, 196);
+    border-radius: 15px;
+    padding-left: 15px;
+  }
+  /* Center search form css end */
+  
+  /* Button right css */
+  
+  #closer-together {
+    float: right;
+  }
+  
+  button#logout-btn{
+    height: 30px;
+    text-decoration: none;
+    font-family: Copperplate;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: gold; 
+    font-weight: 800;
+    /* float: right; */
+
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+  }
+  
+  #logout-btn:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+  }
+
+  ::placeholder {
+    font-size: 20px;
+    font-family: Copperplate;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+  }
+  
+  #user-btn {
+    height: 30px;
+    text-decoration: none;
+    font-family: Copperplate;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: gold; 
+    font-weight: 800;
+
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+  }
+  
+  #user-btn:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+  }
+  /* Button right css end */
+  
+  /* Navbar styles end */
+
+  input {
+    font-family: Copperplate;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+  }
+
+  input:valid {
+    font-family: Copperplate;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+  }

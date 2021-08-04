@@ -1,0 +1,81 @@
+.username {
+    text-align: center;
+    /* margin-bottom: 100px; */
+
+    font-family: Copperplate;
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
+}
+
+.fav-game-header {
+    text-align: center;
+    /* margin-bottom: 100px; */
+
+    font-family: Copperplate;
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
+}
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-game-img {
+    flex: 1 0 21%;
+    height: 200px;
+    width: 200px;
+    margin: 0px 5px 0px 5px;
+    border: 2px solid black;
+}
+
+.reviewed {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-review-div {
+    flex: 1 0 21%;
+    margin: 0px 5px 0px 5px;
+
+    text-align: center;
+    font-family: Copperplate;
+    color: #E8E8E8;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+    overflow-wrap: break-word;
+}
+
+.profile-li {
+    font-size: 30px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* .profile-review-game-title{
+    font-size: 20px;
+}
+
+.profile-review-game-rating{
+    font-size: 20px;
+}
+
+.user-review-content{
+    font-size: 20px;
+    overflow-wrap: break-word;
+}
+
+.user-review-div:hover {
+    box-shadow: 0px 10px 36px 2px gold;
+} */
+

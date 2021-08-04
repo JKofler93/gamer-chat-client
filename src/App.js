@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch, useHistory, useLocation } from "react-router-dom";
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import NavBar from './components/NavBar';
-import GameContainer from './components/games/GameContainer';
-import UserPage from './components/users/UserPage';
-import GamePage from './components/games/GamePage';
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import NavBar from "./components/app/NavBar";
+import GameContainer from "./components/games/GameContainer";
+import UserPage from "./components/users/UserPage";
+import GamePage from "./components/games/GamePage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -30,11 +30,11 @@ console.log("HISTORY", history)
     setModalIsOn(false)
   }
 
-  // Authenticate user and keep them 'logged in'
+  // Authenticate user and keep them "logged in"
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if(token) {
-      fetch('http://localhost:3000/profile', {
+      fetch("http://localhost:3000/profile", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -42,6 +42,7 @@ console.log("HISTORY", history)
       })
       .then(res => res.json())
       .then(user => {
+        console.log(user)
         setCurrentUser(user);
       })
     }
@@ -56,20 +57,19 @@ console.log("HISTORY", history)
   // logs out user
   const logoutUser = () => {
     setCurrentUser(null)
-    localStorage.removeItem('token')
-    history.push('/')
+    localStorage.removeItem("token")
+    history.push("/")
   }
 
   const handleFavoriteGame = (gameObj) => {
-    fetch('http://localhost:3000/favorite_games', {
+    fetch("http://localhost:3000/favorite_games", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         game_id: gameObj.id,
-        user_id: currentUser.id,
-        favorite: false
+        user_id: currentUser.id
       })
     })
     .then(res => res.json())
@@ -77,23 +77,23 @@ console.log("HISTORY", history)
       if(data.id !== null) {
         setFavoriteGames([...favoriteGames, data])
       } else {
-        alert('You already like this game...')
+        alert("You already like this game...")
       }
     })
   }
 
-  const addFavoriteGame = (updatedFavoriteGame) => {
-    const updatedFavoriteGames = favoriteGames.map(favoriteGame => {
-      if(favoriteGame.id === updatedFavoriteGame.id) {
-        return {...favoriteGame, favorite: updatedFavoriteGame.favorite}
-      }
-      return favoriteGame
-    })
-    setFavoriteGames(updatedFavoriteGames)
-  }
+  // const addFavoriteGame = (updatedFavoriteGame) => {
+  //   const updatedFavoriteGames = favoriteGames.map(favoriteGame => {
+  //     if(favoriteGame.id === updatedFavoriteGame.id) {
+  //       return {...favoriteGame, favorite: updatedFavoriteGame.favorite}
+  //     }
+  //     return favoriteGame
+  //   })
+  //   setFavoriteGames(updatedFavoriteGames)
+  // }
 
   useEffect(() => {
-    fetch('http://localhost:3000/games')
+    fetch("http://localhost:3000/games")
     .then(res => res.json())
     .then(data => {
       console.log(data)
@@ -102,11 +102,16 @@ console.log("HISTORY", history)
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:3000/favorite_games')
+    fetch("http://localhost:3000/favorite_games")
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setFavoriteGames(data)
+        if(data) {
+          setFavoriteGames(data)
+        } 
+        else {
+          console.log(`problemo`, data)
+        }
       })
   }, []);
   
@@ -136,11 +141,11 @@ console.log("HISTORY", history)
           </Route>
 
           <Route exact path="/users/:id">
-            <UserPage currentUser={currentUser} setFavoriteGames={setFavoriteGames} favoriteGames={favoriteGames} addFavoriteGame={addFavoriteGame}/>
+            <UserPage currentUser={currentUser} setFavoriteGames={setFavoriteGames} favoriteGames={favoriteGames}/>
           </Route>
           
           
-          <Route exact path='/'>
+          <Route exact path="/">
             <Login loginUser={loginUser}/>
           </Route>
 

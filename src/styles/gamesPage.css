@@ -1,0 +1,70 @@
+body {
+    background: url(https://cdn02.nintendo-europe.com/media/images/08_content_images/others_2/kidsclub/sq_kidsclub/SQ_KidsClub_CreateDecorate_mario_block.jpg);
+}
+
+/* html {  
+    background: url(https://cdn02.nintendo-europe.com/media/images/08_content_images/others_2/kidsclub/sq_kidsclub/SQ_KidsClub_CreateDecorate_mario_block.jpg);
+} */
+
+
+.game-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    margin-top: 100px;
+
+}
+
+.game-card {
+    flex: 0% 0% 33.33%;
+    border-radius: 10px;
+    background-color: gold;
+
+    border: 2px solid black;
+    margin-bottom: 100px;
+    margin-left: 20px;
+}
+
+.game-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+}
+
+
+
+.banner {
+    height: 300px;
+    width: 350px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    margin: 10px 10px 10px 10px;
+    border: 2px solid black;
+}
+
+.game-info {
+    text-align: center;
+    
+    font-family: Copperplate;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.game-title-div {
+    width: 200px;
+}
+
+.game-title {
+    font-size: 20px;
+    font-weight: 800;
+    word-wrap: break-word;
+    
+}
+
+.game-rating {
+    font-size: 20px;
+}

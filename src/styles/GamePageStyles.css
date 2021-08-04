@@ -1,0 +1,209 @@
+
+.game-page-title {
+    text-align: center;
+    /* margin-bottom: 100px; */
+
+    font-family: Copperplate;
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.fav-button {
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.favorite-game-button {
+    height: 30px;
+    text-decoration: none;
+    font-family: Copperplate;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: gold; 
+    font-weight: 800;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.game-video {
+    display: block; 
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+.game-banner {
+    width: 600px;
+    height: 300px;
+    display: block; 
+    margin: auto;
+}
+
+.game-banner-div {
+    margin-bottom: 100px;
+
+}
+
+.game-description {
+    text-align: center;
+    font-family: Copperplate;
+    font-size: 40px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.favorite-game-button:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+}
+
+.reviews-heading {
+    text-align: center;
+    font-family: Copperplate;
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.submit-btn {
+    height: 30px;
+    text-decoration: none;
+    font-family: Copperplate;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: gold; 
+    font-weight: 800;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.submit-btn:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+}
+
+.review-form-div {
+    display: flex;
+    justify-content: center;
+}
+
+.leave-review {
+    font-family: Copperplate;
+    font-size: 30px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.your-rating {
+    font-family: Copperplate;
+    font-size: 30px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.review-input {
+    width: 100%;
+    align-items: center;
+    text-decoration: none;
+    font-family: Copperplate;
+    color: black;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: gold; 
+    text-align: center;
+    font-weight: 600;
+    height: 30px;
+}
+
+.review-div {    
+    text-align: center;
+    font-family: Copperplate;
+    font-size: 30px;
+    color: white;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.review-username {
+    text-decoration: none;
+    color: black;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: gold;
+    font-size: 40px;
+}
+
+.review-username:hover {
+    color: gold;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+    box-shadow: 0px 10px 36px 2px gold;
+}
+
+.review-content {
+    margin-top: -10px;
+}
+
+.edit-button {
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: gold; 
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.edit-button:hover {
+    color: gold;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+}
+
+.delete-button {
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: gold; 
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+}
+
+.delete-button:hover {
+    color: gold;
+    -webkit-text-stroke-width: 1.0px;
+    -webkit-text-stroke-color: black;
+    box-shadow: 0px 10px 36px 2px gold;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+

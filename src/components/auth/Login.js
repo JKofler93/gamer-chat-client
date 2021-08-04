@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import loginStyles from "../../styles/loginStyles.css";
 
 function Login({ loginUser }) {
     const [username, setUsername] = useState("");
@@ -39,7 +40,7 @@ function Login({ loginUser }) {
         <div className="login">
             <div className="login-border">
                 <form className="login-from" onSubmit={handleUserLogin}>
-                    <h2>Gamer Chat 🕹 💬</h2>
+                    <h2 className="app-name">Gamer Chat 🕹 💬</h2>
 
                         <input
                             className="login-input-field"
@@ -63,16 +64,10 @@ function Login({ loginUser }) {
                             Login</button>
                 </form>
                 <div className="errors">{errors}</div>
-
-                <button 
-                className="submit-button">
-                    <NavLink exact to="/register" className="submit-button">Not a Member?</NavLink>
-                </button>
-
-                <button 
-                    className="submit-button" 
-                    onClick={() => history.push("/games")}
-                >Look around?</button>
+                <br/>
+                <button className="submit-button"><NavLink exact to="/register" className="submit-button">Not a Member?</NavLink></button>
+                <br/>
+                <button className="submit-button" onClick={() => history.push("/games")}>Look around?</button>
             </div>
         </div>
     )
